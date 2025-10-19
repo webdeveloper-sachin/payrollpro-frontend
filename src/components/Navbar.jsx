@@ -2,6 +2,9 @@ import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 import { FiLogOut, FiUser, FiMenu, FiX, FiHome, FiSettings } from 'react-icons/fi'
+import { GiFireworkRocket } from 'react-icons/gi'
+import { MdWork, MdWorkHistory } from 'react-icons/md'
+import { FcWorkflow } from 'react-icons/fc'
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext)
@@ -54,10 +57,13 @@ const Navbar = () => {
                                             <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
                                                 <FiUser className="w-4 h-4 text-blue-600" />
                                             </div>
-                                            <div className="flex flex-col">
-                                                <span className="text-sm font-medium text-gray-900">{user.name}</span>
-                                                <span className="text-xs text-gray-500 capitalize">{user.role}</span>
-                                            </div>
+                                            <Link to="profile">
+                                                <div className="flex flex-col">
+
+                                                    <span className="text-sm font-medium text-gray-900">{user.name}</span>
+                                                    <span className="text-xs text-gray-500 capitalize">{user.role}</span>
+                                                </div>
+                                            </Link>
                                         </div>
 
                                         {user.role === 'admin' && (
@@ -69,6 +75,14 @@ const Navbar = () => {
                                                 <span>Admin</span>
                                             </Link>
                                         )}
+                                        <Link
+                                            to="/working-summary"
+                                            className="flex items-center space-x-1 px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-200"
+                                        >
+                                            <MdWorkHistory className="w-4 h-4" />
+                                            <span>Summary</span>
+                                        </Link>
+
 
                                         <button
                                             onClick={handleLogout}
@@ -151,6 +165,13 @@ const Navbar = () => {
                                                 <span>Admin Panel</span>
                                             </Link>
                                         )}
+                                        <Link
+                                            to="/working-summary"
+                                            className="flex items-center space-x-1 px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-200"
+                                        >
+                                            <MdWorkHistory className="w-4 h-4" />
+                                            <span>Summary</span>
+                                        </Link>
 
                                         <button
                                             onClick={handleLogout}

@@ -6,6 +6,8 @@ import Dashboard from './pages/Dashboard'
 import AdminPanel from './pages/AdminPanel'
 import Navbar from './components/Navbar'
 import { AuthContext } from './context/AuthContext'
+import UserProfile from './pages/UserPage'
+import WorkSummary from './components/WorkSummary'
 
 
 const App = () => {
@@ -20,6 +22,8 @@ const App = () => {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/working-summary" element={<WorkSummary />} />
           <Route path="/" element={user ? <Dashboard /> : <Navigate to="/login" />} />
           <Route path="/admin" element={user && user.role === 'admin' ? <AdminPanel /> : <Navigate to="/" />} />
         </Routes>
